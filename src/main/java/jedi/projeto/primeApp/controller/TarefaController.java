@@ -1,6 +1,7 @@
 package jedi.projeto.primeApp.controller;
 
 import jedi.projeto.primeApp.model.entity.Tarefa;
+import jedi.projeto.primeApp.service.TarefaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TarefaController {
 
+    private final TarefaService tarefaService;
     @GetMapping
     public List<Tarefa> getAll(){
         return null;
