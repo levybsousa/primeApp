@@ -1,5 +1,6 @@
 package jedi.projeto.primeApp.service;
 
+import jedi.projeto.primeApp.exception.RecursoNaoEncontradoException;
 import jedi.projeto.primeApp.model.entity.Tarefa;
 import jedi.projeto.primeApp.repository.TarefaRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class TarefaService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RuntimeException();
+            throw new RecursoNaoEncontradoException();
         }
     }
 
@@ -44,7 +45,7 @@ public class TarefaService {
         Optional<Tarefa> tarefaFromDataBase = tarefaRepository.getTarefaByNome(tarefa.getNome());
 
         if (tarefaFromDataBase.isPresent() && tarefaFromDataBase.get().getId() != tarefa.getId()) {
-            throw new RuntimeException();
+            throw new RecursoNaoEncontradoException();
         }
         Tarefa result = tarefaRepository.save(tarefa);
         return result;
