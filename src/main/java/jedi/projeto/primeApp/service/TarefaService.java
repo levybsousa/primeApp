@@ -6,30 +6,53 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class TarefaService {
-    
+
     private final TarefaRepository tarefaRepository;
 
     public List<Tarefa> getAll() {
-        return null;
+        List<Tarefa> result = tarefaRepository.findAll();
+        return result;
     }
 
     public Tarefa getById(Long id) {
-        return null;
+        Optional<Tarefa> result = tarefaRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        } else {
+            throw new RuntimeException();
+        }
     }
 
     public Tarefa save(Tarefa tarefa) {
-        return null;
+        Optional<Tarefa> tarefaFromDataBase = tarefaRepository.getTarefaByNome(tarefa.getNome());
+        if (tarefaFromDataBase.isPresent()) {
+            throw new RuntimeException();
+        } else {
+            Tarefa result = tarefaRepository.save(tarefa);
+            return result;
+        }
     }
 
     public Tarefa update(Long id, Tarefa tarefa) {
-        return null;
+        getById(id);
+
+        Optional<Tarefa> tarefaFromDataBase = tarefaRepository.getTarefaByNome(tarefa.getNome());
+
+        if (tarefaFromDataBase.isPresent() && tarefaFromDataBase.get().getId() != tarefa.getId()) {
+            throw new RuntimeException();
+        }
+        Tarefa result = tarefaRepository.save(tarefa);
+        return result;
     }
 
     public void delete(Long id) {
+        getById(id);
+        tarefaRepository.deleteById(id);
 
     }
 }
