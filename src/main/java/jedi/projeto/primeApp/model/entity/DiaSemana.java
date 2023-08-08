@@ -1,7 +1,7 @@
 package jedi.projeto.primeApp.model.entity;
 
 import jakarta.persistence.*;
-import jedi.projeto.primeApp.enumeration.TarefaEnum;
+import jedi.projeto.primeApp.enumeration.DiaSemanaEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class DiaSemana {
-    private TarefaEnum tarefaEnum;
+    private DiaSemanaEnum tarefaEnum;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "diaSemana_sequence")

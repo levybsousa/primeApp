@@ -1,12 +1,9 @@
 package jedi.projeto.primeApp.model.entity;
 
 import jakarta.persistence.*;
-import jedi.projeto.primeApp.enumeration.TarefaEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor

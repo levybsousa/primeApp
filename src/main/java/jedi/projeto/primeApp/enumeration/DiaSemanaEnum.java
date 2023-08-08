@@ -1,6 +1,6 @@
 package jedi.projeto.primeApp.enumeration;
 
-public enum TarefaEnum {
+public enum DiaSemanaEnum {
 
     SEGUNDA_FEIRA,
     TERCA_FEIRA,
