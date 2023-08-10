@@ -16,6 +16,4 @@ public class Tarefa {
     private Long id;
     private String nome;
 
-    @ManyToOne
-    private DiaSemana diaSemana;
 }
