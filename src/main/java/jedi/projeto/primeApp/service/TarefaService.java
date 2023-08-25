@@ -1,5 +1,6 @@
 package jedi.projeto.primeApp.service;
 
+import jedi.projeto.primeApp.enumeration.DiaSemanaEnum;
 import jedi.projeto.primeApp.exception.RecursoNaoEncontradoException;
 import jedi.projeto.primeApp.model.entity.Tarefa;
 import jedi.projeto.primeApp.repository.TarefaRepository;
@@ -31,6 +32,12 @@ public class TarefaService {
 
     public Tarefa save(Tarefa tarefa) {
         Optional<Tarefa> tarefaFromDataBase = tarefaRepository.getTarefaByNome(tarefa.getNome());
+
+        DiaSemanaEnum diaSemana = DiaSemanaEnum.getByNome(tarefa.getDiaSemana());
+        if (diaSemana == null) {
+            throw new RuntimeException("Dia não encotrado");
+        }
+
         if (tarefaFromDataBase.isPresent()) {
             throw new RuntimeException();
         } else {

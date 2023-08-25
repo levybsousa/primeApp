@@ -15,5 +15,5 @@ public class Tarefa {
     @SequenceGenerator(name = "tarefa_sequence", sequenceName = "tar_seq")
     private Long id;
     private String nome;
-
+    private String diaSemana;
 }

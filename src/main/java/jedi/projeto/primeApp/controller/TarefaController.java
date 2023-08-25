@@ -3,6 +3,7 @@ package jedi.projeto.primeApp.controller;
 import jedi.projeto.primeApp.model.entity.Tarefa;
 import jedi.projeto.primeApp.service.TarefaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,10 @@ public class TarefaController {
     }
 
     @GetMapping("/{id}")
-    public Tarefa getById(@PathVariable Long id) {
-        return tarefaService.getById(id);
+    public ResponseEntity<Tarefa> getById(@PathVariable Long id) {
+
+        Tarefa tarefa = tarefaService.getById(id);
+        return ResponseEntity.ok(tarefa);
     }
 
     @PostMapping
