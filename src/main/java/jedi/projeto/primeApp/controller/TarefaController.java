@@ -23,18 +23,21 @@ public class TarefaController {
     @GetMapping("/{id}")
     public ResponseEntity<Tarefa> getById(@PathVariable Long id) {
 
-        Tarefa tarefa = tarefaService.getById(id);
-        return ResponseEntity.ok(tarefa);
+        Tarefa tarefaController = tarefaService.getById(id);
+        return ResponseEntity.ok(tarefaController);
     }
 
     @PostMapping
-    public Tarefa save(@RequestBody Tarefa tarefa) {
-        return tarefaService.save(tarefa);
+    public ResponseEntity<Tarefa> save(@RequestBody Tarefa tarefa) {
+
+        Tarefa tarefaController = tarefaService.save(tarefa);
+        return ResponseEntity.ok(tarefaController);
     }
 
     @PutMapping("/{id}")
-    public Tarefa update(@PathVariable Long id, @RequestBody Tarefa tarefa) {
-        return tarefaService.update(id, tarefa);
+    public ResponseEntity<Tarefa> update(@PathVariable Long id, @RequestBody Tarefa tarefa) {
+        Tarefa tarefaController = tarefaService.update(id, tarefa);
+        return ResponseEntity.ok(tarefaController);
     }
 
     @DeleteMapping("/{id}")
