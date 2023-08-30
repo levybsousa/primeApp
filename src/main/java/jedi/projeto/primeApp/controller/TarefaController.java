@@ -16,8 +16,10 @@ public class TarefaController {
     private final TarefaService tarefaService;
 
     @GetMapping
-    public List<Tarefa> getAll() {
-        return tarefaService.getAll();
+    public ResponseEntity<List<Tarefa>> getAll() {
+        List<Tarefa> tarefaResponse = tarefaService.getAll();
+        return ResponseEntity.ok(tarefaResponse);
+
     }
 
     @GetMapping("/{id}")
@@ -41,8 +43,10 @@ public class TarefaController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         tarefaService.delete(id);
+        return ResponseEntity.ok().build();
+
     }
 
 }
