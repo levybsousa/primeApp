@@ -8,9 +8,12 @@ import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class TratamentoGlobalException {
-    @ExceptionHandler(value
-            = {IllegalArgumentException.class, IllegalStateException.class})
-    private ResponseEntity<Object> handleRecursoNaoEncontradoException(RuntimeException ex, WebRequest request) {
-        return ResponseEntity.ok().build();
+
+    @ExceptionHandler(value = {RecursoNaoEncontradoException.class})
+    private ResponseEntity<ExceptionDto> handleRecursoNaoEncontradoException(RecursoNaoEncontradoException exception  , WebRequest request) {
+        ExceptionDto responseDto = new ExceptionDto();
+        responseDto.setMensagem(exception.getMessage());
+        responseDto.setStatusCode(404L);
+            return ResponseEntity.ok(responseDto);
     }
 }

@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class ExceptionDto {
     private String mensagem;
-    private String statusCode;
+    private Long statusCode;
 }

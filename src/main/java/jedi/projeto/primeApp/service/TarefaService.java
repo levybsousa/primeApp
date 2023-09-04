@@ -26,7 +26,7 @@ public class TarefaService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RecursoNaoEncontradoException();
+            throw new RecursoNaoEncontradoException("Tarefa não encontrada");
         }
     }
 
@@ -35,11 +35,11 @@ public class TarefaService {
 
         DiaSemanaEnum diaSemana = DiaSemanaEnum.getByNome(tarefa.getDiaSemana());
         if (diaSemana == null) {
-            throw new RuntimeException("Dia não encotrado");
+            throw new RecursoNaoEncontradoException("Dia não encotrado");
         }
 
         if (tarefaFromDataBase.isPresent()) {
-            throw new RuntimeException();
+            throw new RecursoNaoEncontradoException();
         } else {
             Tarefa result = tarefaRepository.save(tarefa);
             return result;
